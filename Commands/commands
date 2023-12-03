@@ -31,3 +31,27 @@ kubectl get ingress
 kubectl describe ingresskubectl describe ingress nginx-rules
 minikube ip
 kubectl get pod pod-name --watch
+
+troubleshooting
+> kubectl get nodes
+> kubectl describe node <nodeName>
+> sudo systemctl status docker
+> sudo systemctl status kubelet
+> sudo systemctl start kubelet 
+> sudo systemctl enable kubelet
+> kubectl pods -n kube-system
+> kubectl describe pod podname -n kube-system
+
+Service Logs
+> sudo journelctl -u kublet
+> sudo journelctl -u docker
+> kubectl logs -n kube-system <pod_name>
+> sudo journel -u kublet -f
+
+Checking pod Status
+> kubectl get pods
+> kubectl describe pod <pod-name>
+> kubectl exec <pod-name> -c <container-name> -- command 
+> kubectl exec <pod-name> -c <container-name> -- ls
+> kubectl exec <pod-name> -c <container-name> -- ls /tmp/
+> kubectl exec -it <pod-name> -c <container-name> -- /bin/bash
