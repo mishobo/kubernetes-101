@@ -1,0 +1,33 @@
+sudo apt install conntrack
+minikube start --kubernetes-version=v1.20.0 --driver=none
+kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
+kubectl get deployment
+kubectl get pods -o wide 
+kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+kubectl get services
+minikube service hello-node --url
+kubectl config current-context
+kubectl config get-contexts
+kubectl get nodes
+kubectl scale --replicas=2 replicationcontroller/nginx
+kubectl apply -f .\deployment.yml
+kubectl rollout status deployment.apps/chef-server --rcord
+kubectl describe  deployment.apps/chef-server     
+kubectl get rs
+kubectl get pods --show-labels
+kubectl get pods -o wide  --show-labels
+kubectl rollout history deployment.apps/chef-server 
+kubectl describe pod chef-server-77cb664797-2hwj6
+kubectl rollout undo deployment.apps/chef-server
+kubectl rollout undo deployment.apps/chef-server --to-revision=1
+kubectl scale deployment.apps/chef-server --replicas=5
+kubectl exec -it lifecycle-demo -- /bin/bash
+kubectl delete deployment <deploymentName>
+kubectl exec pod-svc-test -- curl nginx-service:8080
+kubectl create namespace service-namespace
+kubectl get pods -o wide --show-label -n service-namespace
+kubectl exec -n service-namespace svc-test-dns -- curl nginx-service.default.svc.cluster.local:8080
+kubectl get ingress
+kubectl describe ingresskubectl describe ingress nginx-rules
+minikube ip
+kubectl get pod pod-name --watch
