@@ -55,3 +55,6 @@ Checking pod Status
 > kubectl exec <pod-name> -c <container-name> -- ls
 > kubectl exec <pod-name> -c <container-name> -- ls /tmp/
 > kubectl exec -it <pod-name> -c <container-name> -- /bin/bash
+
+Container logs
+> kubectl logs <pod-name> -c <container-name>
